@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fae9ed">
+  <meta name="description" content="把想念写成小纸条，把温柔一点点送给你。这里的每一份心意，都只为你。">
+  <title>给最喜欢的你 · 一点点心意</title>
+  <style>
+    /* 全部样式都在这里，无需下载字体、图片或其他文件。 */
+    :root { color-scheme: light; --ink: #623c49; --muted: #886873; --rose: #a44462; --paper: #fffaf7; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: #fae9ed; font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif; }
+    body::before { content: ""; position: fixed; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 15% 20%, #fff7ee 0, transparent 48%), radial-gradient(ellipse at 90% 70%, #f4d9e2 0, transparent 52%); z-index: -1; }
+    button { font: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    button:focus-visible { outline: 3px solid #863a61; outline-offset: 5px; }
+    .page { max-width: 1080px; margin: auto; padding: 27px 36px 22px; }
+    .masthead { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid #a8697b30; font-size: 12px; letter-spacing: .1em; }
+    .brand { display: flex; align-items: center; gap: 9px; font-weight: 600; }
+    .brand svg { width: 23px; height: 23px; }
+    .edition { color: var(--muted); font-size: 10px; letter-spacing: .18em; }
+    .intro { text-align: center; position: relative; padding: 36px 0 24px; }
+    .eyebrow { margin: 0 0 13px; color: var(--rose); font-size: 10px; letter-spacing: .25em; }
+    h1 { margin: 0; font-family: "STKaiti", "KaiTi", "Songti SC", "SimSun", serif; font-size: clamp(32px, 5.5vw, 50px); font-weight: 500; line-height: 1.5; letter-spacing: .09em; }
+    h1 em { color: var(--rose); font-style: normal; position: relative; white-space: nowrap; }
+    h1 em::after { content: ""; position: absolute; bottom: -6px; left: 3%; width: 94%; height: 8px; border-top: 2px solid #ce8f9f; border-radius: 50%; transform: rotate(-3deg); }
+    .subtitle { margin: 20px 0 0; color: var(--muted); font-size: 13px; line-height: 1.9; }
+    .board-wrap { position: relative; border: 1px solid #fffaf8; border-radius: 20px; padding: 19px 20px 12px; background: #fffaf766; box-shadow: 0 10px 50px #95556b06; }
+    .board-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 11px; }
+    .board-caption { display: flex; align-items: center; gap: 7px; }
+    .dot { width: 6px; height: 6px; background: #ae647e; border-radius: 50%; }
+    #counter { font-variant-numeric: tabular-nums; }
+    .board { height: 325px; position: relative; isolation: isolate; margin-top: 12px; background-image: radial-gradient(#a16c7f24 .8px, transparent .8px); background-size: 18px 18px; border-radius: 12px; }
+    .board::before { content: "每一张，都是想对你说的话"; position: absolute; inset: 0; display: grid; place-items: center; font-size: 12px; color: #8a6774; letter-spacing: .16em; z-index: -1; }
+    .tip { position: absolute; margin: 0; padding: 22px 18px 15px; border: 1px solid #ffffffb3; border-radius: 4px 4px 16px 4px; box-shadow: 0 7px 15px #79445612; transform: rotate(var(--tilt)); animation: arrive .8s cubic-bezier(.22,.7,.25,1) both; overflow-wrap: anywhere; }
+    .tip::before { content: ""; width: 52px; height: 17px; position: absolute; top: -8px; left: calc(50% - 26px); background: #ffffff85; border-left: 1px dashed #e9d2cf; border-right: 1px dashed #e9d2cf; transform: rotate(-3deg); }
+    .tip-meta { display: flex; justify-content: space-between; align-items: center; color: #795765; font-size: 9px; letter-spacing: .13em; }
+    .tip-icon { font-size: 16px; line-height: 1; }
+    .tip h2 { margin: 10px 0 6px; font-size: 17px; font-weight: 600; line-height: 1.65; letter-spacing: .02em; }
+    .tip p { margin: 0; color: #765762; font-size: 11px; line-height: 1.65; }
+    .board-bottom { margin: 9px 0 0; text-align: center; color: var(--muted); font-size: 10px; letter-spacing: .12em; }
+    .actions { display: flex; flex-direction: column; align-items: center; gap: 9px; margin-top: 23px; }
+    .surprise { min-height: 52px; min-width: 240px; border: 1px solid #9f3e5b; border-radius: 100px; padding: 13px 27px; color: #fffaf8; background: #a44462; box-shadow: 0 6px 18px #aa4a6424; transition: transform .2s, background .2s; font-size: 14px; letter-spacing: .08em; }
+    .surprise:hover { background: #923852; transform: translateY(-2px); }
+    .surprise:active { transform: scale(.97); }
+    .surprise span { padding-left: 14px; }
+    .pause { min-height: 44px; padding: 8px 16px; border: 0; background: transparent; color: #835563; font-size: 11px; }
+    footer { display: flex; justify-content: space-between; gap: 16px; align-items: center; margin-top: 15px; padding-top: 17px; border-top: 1px solid #a8697b30; color: var(--muted); font-size: 11px; line-height: 1.8; }
+    .signature { color: var(--rose); white-space: nowrap; }
+    .heart { position: fixed; pointer-events: none; z-index: 5; font-family: Georgia, serif; color: #b84f75; animation: heart-rise 1.5s ease-out forwards; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    noscript p { background: #fffaf7; padding: 18px; border-radius: 12px; line-height: 1.8; }
+    @keyframes arrive { from { opacity: 0; transform: translateY(12px) rotate(0deg) scale(.95); } to { opacity: 1; transform: translateY(0) rotate(var(--tilt)) scale(1); } }
+    @keyframes heart-rise { 0% { opacity: 0; transform: translate(0,0) scale(.5); } 20% { opacity: .85; } 100% { opacity: 0; transform: translate(var(--drift), -140px) rotate(var(--spin)) scale(1.2); } }
+    @media (max-width: 600px) {
+      .page { padding: 20px 18px max(20px, env(safe-area-inset-bottom)); }
+      .masthead { padding-bottom: 15px; }
+      .edition { font-size: 9px; letter-spacing: .1em; }
+      .intro { padding: 29px 0 22px; }
+      h1 { font-size: clamp(28px, 7.7vw, 42px); letter-spacing: .03em; }
+      .subtitle { font-size: 12px; margin-top: 16px; }
+      .board-wrap { padding: 16px 9px 12px; border-radius: 16px; }
+      .board-top { padding: 0 5px; font-size: 10px; }
+      .board { height: 342px; margin-top: 16px; }
+      .tip { padding: 19px 11px 12px; }
+      .tip h2 { font-size: 15px; margin-top: 9px; }
+      .tip p { font-size: 11px; }
+      .tip-meta { font-size: 8px; letter-spacing: .03em; }
+      .actions { margin-top: 21px; }
+      footer { justify-content: center; flex-direction: column; gap: 4px; margin-top: 9px; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <div class="brand">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="5" width="20" height="15" rx="3" stroke="currentColor" stroke-width="1.2"/><path d="m3 7 9 7 9-7" stroke="currentColor" stroke-width="1.2"/><path d="M12 7.5s-3-1.6-3-3.2c0-1.4 1.9-1.8 3-.4 1.1-1.4 3-1 3 .4 0 1.6-3 3.2-3 3.2Z" fill="#ae5b75" stroke="#fae9ed" stroke-width="1.3"/></svg>
+        <span>一点点心意</span>
+      </div>
+      <span class="edition">A LITTLE LOVE, FOR YOU</span>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="heading">
+        <p class="eyebrow">TO MY FAVORITE PERSON</p>
+        <h1 id="heading">写给<em id="recipient">最喜欢的你</em></h1>
+        <p class="subtitle">把想念写成小纸条，把温柔一点点送给你。<br>希望你点开这里的时候，嘴角刚好上扬。</p>
+      </section>
+      <section class="board-wrap" aria-label="送给你的暖心小纸条">
+        <div class="board-top">
+          <span class="board-caption"><span class="dot" aria-hidden="true"></span>今天的温柔，正在派送</span>
+          <span id="counter">已送达 000 份心意</span>
+        </div>
+        <div class="board" id="board"></div>
+        <p class="board-bottom">♡ &nbsp; 日子很平常，有你就很特别 &nbsp; ♡</p>
+      </section>
+      <noscript><p>记得多喝水，好好吃饭，早点休息。你一直都值得被温柔对待。♡<br>打开浏览器的 JavaScript 功能，就能收到随机的小纸条啦。</p></noscript>
+      <div class="actions">
+        <button type="button" class="surprise" id="surprise">再来一个惊喜<span aria-hidden="true">♡ →</span></button>
+        <button type="button" class="pause" id="pause" aria-pressed="false">暂停自动送达</button>
+      </div>
+      <p class="sr-only" id="announcement" role="status" aria-live="polite" aria-atomic="true"></p>
+    </main>
+    <footer><span>距离再远，喜欢也会准时抵达。</span><span class="signature">♡ &nbsp; <span id="sender">一直惦记你的我</span></span></footer>
+  </div>
+  <script>
+    'use strict';
+    // 【可以修改这里】保留引号，改成她的昵称和你的落款。
+    const CONFIG = {
+      recipient: '最喜欢的你',
+      sender: '一直惦记你的我',
+      interval: 3200 // 自动送达间隔，单位毫秒，3200 = 3.2 秒。
+    };
+
+    // 每条依次是：大字提示、小字情话、装饰符号。可照着添加新的一行。
+    const MESSAGES = [
+      ['记得多喝水哦', '照顾好你，是我每天的小心愿。', '♡'],
+      ['今天也想你了', '没有特别的事，就是特别想你。', '✉'],
+      ['好好吃饭呀', '一日三餐，都要认真对待。', '☀'],
+      ['你笑起来真好看', '想把所有开心，都分给你。', '✿'],
+      ['早点休息哦', '把烦恼放下，让美梦接住你。', '☾'],
+      ['天冷了，多穿点', '不在身边，也想给你暖暖的拥抱。', '♡'],
+      ['记得吃水果', '给今天加一点甜，也加一点维生素。', '✿'],
+      ['不用一直很坚强', '累了就歇一歇，我愿意听你说。', '☁'],
+      ['期待下次见面', '把没说完的想念，攒成一个拥抱。', '✉'],
+      ['愿你今天顺顺利利', '小小的好运，正在向你靠近。', '✧'],
+      ['别忘了爱自己', '你的感受，永远值得被认真对待。', '♡'],
+      ['想抱抱你', '就现在，不需要任何理由。', '♡'],
+      ['慢一点也没关系', '按你的节奏，走喜欢的路。', '☁'],
+      ['今天辛苦啦', '已经很棒了，给自己一点掌声。', '✧'],
+      ['有你，真好', '普通的日子，也变得闪闪发光。', '☀'],
+      ['每天都偏爱你', '这张小纸条，只寄给特别的你。', '✉'],
+      ['愿烦恼轻一点', '愿快乐多一点，愿你自在一点。', '☁'],
+      ['做个甜甜的梦', '晚安，明天也继续喜欢你。', '☾']
+    ];
+    const COLORS = ['#f7dce3', '#f9edcc', '#e4e9df', '#e9e0f2', '#f8e4d8', '#dfecef'];
+    const board = document.getElementById('board');
+    const pauseButton = document.getElementById('pause');
+    const surpriseButton = document.getElementById('surprise');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let paused = reducedMotion.matches;
+    let timer = null;
+    let delivered = 0;
+    let messageBag = [];
+    let cards = [];
+
+    document.getElementById('recipient').textContent = CONFIG.recipient;
+    document.getElementById('sender').textContent = CONFIG.sender;
+    document.title = '给' + CONFIG.recipient + ' · 一点点心意';
+
+    const random = (min, max) => min + Math.random() * (max - min);
+    const choose = list => list[Math.floor(Math.random() * list.length)];
+    const columns = () => board.clientWidth < 580 ? 2 : 3;
+    const capacity = () => columns() * 2;
+
+    // 用洗牌保证一轮内不重复；画面上已有的句子也不会同时再出现。
+    function nextMessage() {
+      if (!messageBag.length) {
+        messageBag = MESSAGES.filter(message => !cards.some(card => card.message === message));
+        for (let i = messageBag.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [messageBag[i], messageBag[j]] = [messageBag[j], messageBag[i]];
+        }
+      }
+      return messageBag.pop();
+    }
+
+    // 随机选择空位置，再在该区域轻微偏移。卡片始终在画板内，不挡住按钮。
+    function positionCards() {
+      const cols = columns();
+      const cellWidth = board.clientWidth / cols;
+      cards.forEach(card => {
+        card.element.style.width = Math.min(265, cellWidth - 22) + 'px';
+      });
+      // 依据文字实际高度排两行，放大字体时画板也会随之增高。
+      const tallest = Math.max(120, ...cards.map(card => card.element.offsetHeight));
+      const rowHeight = tallest + 34;
+      board.style.height = Math.max(window.innerWidth <= 600 ? 342 : 325, rowHeight * 2) + 'px';
+      const cellHeight = board.clientHeight / 2;
+      cards.forEach(card => {
+        const width = card.element.offsetWidth;
+        const height = card.element.offsetHeight;
+        const x = (card.slot % cols) * cellWidth + (cellWidth - width) / 2 + card.jitterX * 3;
+        const y = Math.floor(card.slot / cols) * cellHeight + (cellHeight - height) / 2 + card.jitterY * 4;
+        card.element.style.left = x + 'px';
+        card.element.style.top = y + 'px';
+      });
+    }
+
+    function addCard(announce = false) {
+      const message = nextMessage();
+      if (cards.length >= capacity()) cards.shift().element.remove();
+      const free = Array.from({ length: capacity() }, (_, i) => i).filter(slot => !cards.some(card => card.slot === slot));
+      const slot = choose(free);
+      const element = document.createElement('article');
+      element.className = 'tip';
+      element.style.backgroundColor = choose(COLORS);
+      element.style.setProperty('--tilt', random(-2.1, 2.1) + 'deg');
+      const meta = document.createElement('div');
+      meta.className = 'tip-meta';
+      const number = document.createElement('span');
+      number.textContent = 'FOR YOU · ' + String(++delivered).padStart(3, '0');
+      const icon = document.createElement('span');
+      icon.className = 'tip-icon';
+      icon.setAttribute('aria-hidden', 'true');
+      icon.textContent = message[2];
+      meta.append(number, icon);
+      const title = document.createElement('h2');
+      title.textContent = message[0];
+      const detail = document.createElement('p');
+      detail.textContent = message[1];
+      element.append(meta, title, detail);
+      board.appendChild(element);
+      cards.push({ element, message, slot, jitterX: random(-1, 1), jitterY: random(-1, 1) });
+      positionCards();
+      document.getElementById('counter').textContent = '已送达 ' + String(delivered).padStart(3, '0') + ' 份心意';
+      if (announce) document.getElementById('announcement').textContent = message[0] + '。' + message[1];
+    }
+
+    function burstHearts() {
+      if (reducedMotion.matches) return;
+      document.querySelectorAll('.heart').forEach(heart => heart.remove());
+      const box = surpriseButton.getBoundingClientRect();
+      for (let i = 0; i < 9; i++) {
+        const heart = document.createElement('span');
+        heart.className = 'heart';
+        heart.setAttribute('aria-hidden', 'true');
+        heart.textContent = i % 2 ? '♡' : '♥';
+        heart.style.left = random(box.left + 18, box.right - 18) + 'px';
+        heart.style.top = box.top + 12 + 'px';
+        heart.style.fontSize = random(13, 24) + 'px';
+        heart.style.setProperty('--drift', random(-30, 30) + 'px');
+        heart.style.setProperty('--spin', random(-22, 22) + 'deg');
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1600);
+      }
+    }
+
+    // 只保留一个计时器；切到后台时停止自动更新，避免积累弹窗。
+    function schedule() {
+      clearTimeout(timer);
+      timer = null;
+      if (!paused && !document.hidden) timer = setTimeout(() => { addCard(); schedule(); }, CONFIG.interval);
+    }
+    function updatePauseButton() {
+      pauseButton.textContent = paused ? '继续自动送达' : '暂停自动送达';
+      pauseButton.setAttribute('aria-pressed', String(paused));
+    }
+    pauseButton.addEventListener('click', () => { paused = !paused; updatePauseButton(); schedule(); });
+    surpriseButton.addEventListener('click', () => { addCard(true); burstHearts(); schedule(); });
+    document.addEventListener('visibilitychange', schedule);
+    reducedMotion.addEventListener('change', event => {
+      if (event.matches) {
+        paused = true;
+        document.querySelectorAll('.heart').forEach(heart => heart.remove());
+        updatePauseButton();
+        schedule();
+      }
+    });
+    let resizeFrame;
+    window.addEventListener('resize', () => {
+      cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(() => {
+        while (cards.length > capacity()) cards.shift().element.remove();
+        cards.forEach((card, index) => { card.slot = index; });
+        positionCards();
+      });
+    });
+
+    // 先送达几张便签，然后每隔一会儿送来一份新心意。
+    for (let i = 0, count = capacity(); i < count; i++) addCard();
+    updatePauseButton();
+    schedule();
+  </script>
+</body>
+</html>
