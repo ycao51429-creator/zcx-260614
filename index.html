@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#fae9ed">
-  <meta name="description" content="把想念写成小纸条，把温柔一点点送给你。这里的每一份心意，都只为你。">
-  <title>给最喜欢的你 · 一点点心意</title>
+  <meta name="description" content="把想念写成小纸条，把温柔一点点送给张纯熙宝宝。这里的每一份心意，都只为张纯熙宝宝。">
+  <title>给张纯熙宝宝 · 一点点心意</title>
   <style>
     /* 全部样式都在这里，无需下载字体、图片或其他文件。 */
     :root { color-scheme: light; --ink: #623c49; --muted: #886873; --rose: #a44462; --paper: #fffaf7; }
@@ -31,7 +31,7 @@
     .dot { width: 6px; height: 6px; background: #ae647e; border-radius: 50%; }
     #counter { font-variant-numeric: tabular-nums; }
     .board { height: 325px; position: relative; isolation: isolate; margin-top: 12px; background-image: radial-gradient(#a16c7f24 .8px, transparent .8px); background-size: 18px 18px; border-radius: 12px; }
-    .board::before { content: "每一张，都是想对你说的话"; position: absolute; inset: 0; display: grid; place-items: center; font-size: 12px; color: #8a6774; letter-spacing: .16em; z-index: -1; }
+    .board::before { content: "每一张，都是想对张纯熙宝宝说的话"; position: absolute; inset: 0; display: grid; place-items: center; font-size: 12px; color: #8a6774; letter-spacing: .16em; z-index: -1; }
     .tip { position: absolute; margin: 0; padding: 22px 18px 15px; border: 1px solid #ffffffb3; border-radius: 4px 4px 16px 4px; box-shadow: 0 7px 15px #79445612; transform: rotate(var(--tilt)); animation: arrive .8s cubic-bezier(.22,.7,.25,1) both; overflow-wrap: anywhere; }
     .tip::before { content: ""; width: 52px; height: 17px; position: absolute; top: -8px; left: calc(50% - 26px); background: #ffffff85; border-left: 1px dashed #e9d2cf; border-right: 1px dashed #e9d2cf; transform: rotate(-3deg); }
     .tip-meta { display: flex; justify-content: space-between; align-items: center; color: #795765; font-size: 9px; letter-spacing: .13em; }
@@ -86,55 +86,55 @@
     <main>
       <section class="intro" aria-labelledby="heading">
         <p class="eyebrow">TO MY FAVORITE PERSON</p>
-        <h1 id="heading">写给<em id="recipient">最喜欢的你</em></h1>
-        <p class="subtitle">把想念写成小纸条，把温柔一点点送给你。<br>希望你点开这里的时候，嘴角刚好上扬。</p>
+        <h1 id="heading">写给<em id="recipient">张纯熙宝宝</em></h1>
+        <p class="subtitle">把想念写成小纸条，把温柔一点点送给张纯熙宝宝。<br>希望张纯熙宝宝点开这里的时候，嘴角刚好上扬。</p>
       </section>
-      <section class="board-wrap" aria-label="送给你的暖心小纸条">
+      <section class="board-wrap" aria-label="送给张纯熙宝宝的暖心小纸条">
         <div class="board-top">
           <span class="board-caption"><span class="dot" aria-hidden="true"></span>今天的温柔，正在派送</span>
           <span id="counter">已送达 000 份心意</span>
         </div>
         <div class="board" id="board"></div>
-        <p class="board-bottom">♡ &nbsp; 日子很平常，有你就很特别 &nbsp; ♡</p>
+        <p class="board-bottom">♡ &nbsp; 日子很平常，有张纯熙宝宝就很特别 &nbsp; ♡</p>
       </section>
-      <noscript><p>记得多喝水，好好吃饭，早点休息。你一直都值得被温柔对待。♡<br>打开浏览器的 JavaScript 功能，就能收到随机的小纸条啦。</p></noscript>
+      <noscript><p>记得多喝水，好好吃饭，早点休息。张纯熙宝宝一直都值得被温柔对待。♡<br>打开浏览器的 JavaScript 功能，就能收到随机的小纸条啦。</p></noscript>
       <div class="actions">
         <button type="button" class="surprise" id="surprise">再来一个惊喜<span aria-hidden="true">♡ →</span></button>
         <button type="button" class="pause" id="pause" aria-pressed="false">暂停自动送达</button>
       </div>
       <p class="sr-only" id="announcement" role="status" aria-live="polite" aria-atomic="true"></p>
     </main>
-    <footer><span>距离再远，喜欢也会准时抵达。</span><span class="signature">♡ &nbsp; <span id="sender">一直惦记你的我</span></span></footer>
+    <footer><span>距离再远，喜欢也会准时抵达。</span><span class="signature">♡ &nbsp; <span id="sender">一直惦记张纯熙宝宝的我</span></span></footer>
   </div>
   <script>
     'use strict';
-    // 【可以修改这里】保留引号，改成她的昵称和你的落款。
+    // 【可以修改这里】保留引号，可以调整称呼和署名。
     const CONFIG = {
-      recipient: '最喜欢的你',
-      sender: '一直惦记你的我',
+      recipient: '张纯熙宝宝',
+      sender: '一直惦记张纯熙宝宝的我',
       interval: 3200 // 自动送达间隔，单位毫秒，3200 = 3.2 秒。
     };
 
     // 每条依次是：大字提示、小字情话、装饰符号。可照着添加新的一行。
     const MESSAGES = [
-      ['记得多喝水哦', '照顾好你，是我每天的小心愿。', '♡'],
-      ['今天也想你了', '没有特别的事，就是特别想你。', '✉'],
+      ['记得多喝水哦', '照顾好张纯熙宝宝，是我每天的小心愿。', '♡'],
+      ['今天也想张纯熙宝宝了', '没有特别的事，就是特别想张纯熙宝宝。', '✉'],
       ['好好吃饭呀', '一日三餐，都要认真对待。', '☀'],
-      ['你笑起来真好看', '想把所有开心，都分给你。', '✿'],
-      ['早点休息哦', '把烦恼放下，让美梦接住你。', '☾'],
-      ['天冷了，多穿点', '不在身边，也想给你暖暖的拥抱。', '♡'],
+      ['张纯熙宝宝笑起来真好看', '想把所有开心，都分给张纯熙宝宝。', '✿'],
+      ['早点休息哦', '把烦恼放下，让美梦接住张纯熙宝宝。', '☾'],
+      ['天冷了，多穿点', '不在身边，也想给张纯熙宝宝暖暖的拥抱。', '♡'],
       ['记得吃水果', '给今天加一点甜，也加一点维生素。', '✿'],
-      ['不用一直很坚强', '累了就歇一歇，我愿意听你说。', '☁'],
+      ['不用一直很坚强', '累了就歇一歇，我愿意听张纯熙宝宝说。', '☁'],
       ['期待下次见面', '把没说完的想念，攒成一个拥抱。', '✉'],
-      ['愿你今天顺顺利利', '小小的好运，正在向你靠近。', '✧'],
-      ['别忘了爱自己', '你的感受，永远值得被认真对待。', '♡'],
-      ['想抱抱你', '就现在，不需要任何理由。', '♡'],
-      ['慢一点也没关系', '按你的节奏，走喜欢的路。', '☁'],
+      ['愿张纯熙宝宝今天顺顺利利', '小小的好运，正在向张纯熙宝宝靠近。', '✧'],
+      ['别忘了爱自己', '张纯熙宝宝的感受，永远值得被认真对待。', '♡'],
+      ['想抱抱张纯熙宝宝', '就现在，不需要任何理由。', '♡'],
+      ['慢一点也没关系', '按张纯熙宝宝的节奏，走喜欢的路。', '☁'],
       ['今天辛苦啦', '已经很棒了，给自己一点掌声。', '✧'],
-      ['有你，真好', '普通的日子，也变得闪闪发光。', '☀'],
-      ['每天都偏爱你', '这张小纸条，只寄给特别的你。', '✉'],
-      ['愿烦恼轻一点', '愿快乐多一点，愿你自在一点。', '☁'],
-      ['做个甜甜的梦', '晚安，明天也继续喜欢你。', '☾']
+      ['有张纯熙宝宝，真好', '普通的日子，也变得闪闪发光。', '☀'],
+      ['每天都偏爱张纯熙宝宝', '这张小纸条，只寄给特别的张纯熙宝宝。', '✉'],
+      ['愿烦恼轻一点', '愿快乐多一点，愿张纯熙宝宝自在一点。', '☁'],
+      ['做个甜甜的梦', '晚安，明天也继续喜欢张纯熙宝宝。', '☾']
     ];
     const COLORS = ['#f7dce3', '#f9edcc', '#e4e9df', '#e9e0f2', '#f8e4d8', '#dfecef'];
     const board = document.getElementById('board');
